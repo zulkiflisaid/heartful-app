@@ -13,9 +13,7 @@ const CartPage = () => {
   if (items.length === 0) {
     return (
       <div className="min-h-screen">
-        <div className="sticky top-0 z-40 bg-card px-4 py-4 safe-top">
-          <h1 className="text-xl font-bold">Keranjang</h1>
-        </div>
+        <PageHeader title="Keranjang" />
         <div className="flex flex-col items-center justify-center py-20">
           <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-secondary">
             <Tag className="h-8 w-8 text-muted-foreground" />
@@ -29,9 +27,7 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen pb-32">
-      <div className="sticky top-0 z-40 bg-card px-4 py-4 safe-top">
-        <h1 className="text-xl font-bold">Keranjang ({totalItems})</h1>
-      </div>
+      <PageHeader title={`Keranjang (${totalItems})`} />
 
       <div className="space-y-3 px-4 py-2">
         {items.map(item => (

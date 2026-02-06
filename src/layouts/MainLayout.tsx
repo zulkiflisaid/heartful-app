@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import BottomNav from '@/components/BottomNav';
 
 const MainLayout = () => {
+  const location = useLocation();
+  const hideBottomNav = location.pathname.startsWith('/cart') || location.pathname.startsWith('/checkout');
   return (
     <div className="mx-auto min-h-screen max-w-lg bg-background">
-      <main className="pb-16">
+      <main className={hideBottomNav ? '' : 'pb-16'}>
         <Outlet />
       </main>
-      <BottomNav />
+      {!hideBottomNav && <BottomNav />}
     </div>
   );
 };

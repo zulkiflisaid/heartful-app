@@ -31,7 +31,7 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen pb-24">
       {/* Header */}
-      <div className="sticky top-0 z-40 flex items-center justify-between bg-card/80 px-4 py-3 backdrop-blur-md safe-top">
+      <div className="sticky top-0 z-40 flex items-center justify-between bg-card/2 px-4 py-3 backdrop-blur-md safe-top">
         <button onClick={() => navigate(-1)} className="flex h-8 w-8 items-center justify-center rounded-full bg-background/80">
           <ArrowLeft className="h-5 w-5" />
         </button>
