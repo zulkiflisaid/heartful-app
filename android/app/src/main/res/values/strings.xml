@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Heartful</string>
-    <string name="title_activity_main">Heartful</string>
-    <string name="package_name">com.heartful.app</string>
-    <string name="custom_url_scheme">com.heartful.app</string>
-</resources>

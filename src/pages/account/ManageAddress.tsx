@@ -12,7 +12,25 @@ const ManageAddress = () => {
   const [addresses, setAddresses] = useState<Address[]>(mockAddresses);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
-  const [form, setForm] = useState({ label: '', recipientName: '', phone: '', street: '', city: '', province: '', postalCode: '' });
+  const [form, setForm] = useState({
+    label: '',
+    recipientName: '',
+    phone: '',
+    street: '',
+    city: '',
+    province: '',
+    postalCode: '',
+  });
+
+  const fields: Array<{ key: keyof typeof form; label: string; placeholder: string }> = [
+    { key: 'label', label: 'Label (Rumah/Kantor)', placeholder: 'Rumah' },
+    { key: 'recipientName', label: 'Nama Penerima', placeholder: 'Nama lengkap' },
+    { key: 'phone', label: 'No. HP', placeholder: '08xxx' },
+    { key: 'street', label: 'Alamat Lengkap', placeholder: 'Jl. ...' },
+    { key: 'city', label: 'Kota', placeholder: 'Jakarta' },
+    { key: 'province', label: 'Provinsi', placeholder: 'DKI Jakarta' },
+    { key: 'postalCode', label: 'Kode Pos', placeholder: '12345' },
+  ];
 
   const handleSave = () => {
     if (!form.label || !form.recipientName || !form.street) { toast.error('Mohon isi field yang wajib'); return; }
@@ -69,18 +87,10 @@ const ManageAddress = () => {
         )}
         {showForm && (
           <div className="space-y-3">
-            {[
-              { key: 'label', label: 'Label (Rumah/Kantor)', placeholder: 'Rumah' },
-              { key: 'recipientName', label: 'Nama Penerima', placeholder: 'Nama lengkap' },
-              { key: 'phone', label: 'No. HP', placeholder: '08xxx' },
-              { key: 'street', label: 'Alamat Lengkap', placeholder: 'Jl. ...' },
-              { key: 'city', label: 'Kota', placeholder: 'Jakarta' },
-              { key: 'province', label: 'Provinsi', placeholder: 'DKI Jakarta' },
-              { key: 'postalCode', label: 'Kode Pos', placeholder: '12345' },
-            ].map(field => (
+            {fields.map(field => (
               <div key={field.key} className="space-y-1">
                 <Label className="text-xs">{field.label}</Label>
-                <Input value={(form as any)[field.key]} onChange={e => setForm(f => ({ ...f, [field.key]: e.target.value }))} placeholder={field.placeholder} className="h-10 rounded-lg" />
+                <Input value={form[field.key]} onChange={e => setForm(f => ({ ...f, [field.key]: e.target.value }))} placeholder={field.placeholder} className="h-10 rounded-lg" />
               </div>
             ))}
             <div className="flex gap-2">
